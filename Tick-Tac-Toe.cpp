@@ -74,41 +74,72 @@ int check_state(){
 }
 
 int main (){
-    int state=2;
+    int state;
     int pos;
+    int num=0;
+    int player_num;
+    char player_mark;
 
     draw();
 
     while(true){
-        cout<<"Player 1 - Enter the position: ";
+        num +=1;
+        printf("%d\n",num);
+
+        if (num%2==1){
+            player_num=1;
+            player_mark='O';
+        }
+        else{
+            player_num=2;
+            player_mark='X';
+        }
+
+        printf("Player %d - Enter the position: ",player_num);
         cin>>pos;
 
-        pos_val[pos] = 'O';
 
+        if (pos_val[pos]=='1' && pos==1){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='2' && pos==2){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='3' && pos==3){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='4' && pos==4){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='5' && pos==5){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='6' && pos==6){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='7' && pos==7){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='8' && pos==8){
+            pos_val[pos] = player_mark;
+        }
+        else if (pos_val[pos]=='9' && pos==9){
+            pos_val[pos] = player_mark;
+        }
+        else{
+            printf("Invalid Move");
+            cin.ignore();
+            cin.get();
+            num -=1;
+        }
         draw();
-        //cout<<typeid(pos).name();
         state = check_state();
         if (state==1){
-            cout<<"Player 1 won!!!"<<endl;
+            printf("\nPlayer %d won!!!",player_num);
             break;
         }
         else if(state==0){
-            cout<<"It's a Draw"<<endl;
-            break;
-        }
-
-        cout<<"Player 2 - Enter the position: ";
-        cin>>pos;
-        pos_val[(int)pos] = 'X';
-
-        draw();
-        state = check_state();
-        if (state==1){
-            cout<<"Player 2 won!!!"<<endl;
-            break;
-        }
-        else if(state==0){
-            cout<<"It's a Draw"<<endl;
+            cout<<"\nMatch Drawn"<<endl;
             break;
         }
     }
